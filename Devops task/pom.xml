@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>my-app</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>my-app</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <db.url></db.url>
+        <db.username></db.username>
+        <db.password></db.password>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version> 
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>development</id>
+            <properties>
+                <db.url>jdbc:mysql://localhost:3306/dev_db</db.url>
+                <db.username>dev_user</db.username>
+                <db.password>dev_password</db.password>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>testing</id>
+            <properties>
+                <db.url>jdbc:mysql://localhost:3306/test_db</db.url>
+                <db.username>test_user</db.username>
+                <db.password>test_password</db.password>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>production</id>
+            <properties>
+                <db.url>jdbc:mysql://prod-db-server:3306/prod_db</db.url>
+                <db.username>prod_user</db.username>
+                <db.password>prod_password</db.password>
+            </properties>
+        </profile>
+</project>
